@@ -191,26 +191,26 @@ public class Grafo {
      
      public boolean vaHaciaNodos(Nodo nod,Clique clique){
          int cont=0;
-         Lista listaN = Grafo.get(nod.getId() - 1);
-         if(listaN.getCabeza().getId() == nod.getId()){
-             
-             for (int i = 0; i < clique.size(); i++) {
-                 Nodo tmp = listaN.getCabeza();
-                 while(tmp != null){
-                    if(clique.get(i).getId() == tmp.getId()){
-                        cont++;
-                        break;
-                    }  
-                    tmp = tmp.getSiguiente();
-                 }
-             }
-             if(cont==clique.size()){
-                 return true;
-             }
-                 
-             
-         }else{
-             System.err.println("No es la lista que corresponde al nodo "+ nod.toString2());
+         if( nod != null ){
+            Lista listaN = Grafo.get(nod.getId() - 1);
+            if(listaN.getCabeza().getId() == nod.getId()){
+
+                for (int i = 0; i < clique.size(); i++) {
+                    Nodo tmp = listaN.getCabeza();
+                    while(tmp != null){
+                       if(clique.get(i).getId() == tmp.getId()){
+                           cont++;
+                           break;
+                       }  
+                       tmp = tmp.getSiguiente();
+                    }
+                }
+                if(cont==clique.size()){
+                    return true;
+                }
+            }else{
+                System.err.println("No es la lista que corresponde al nodo "+ nod.toString2());
+            }
          }
          return false;
      }
